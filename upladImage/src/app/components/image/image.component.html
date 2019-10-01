@@ -1,0 +1,80 @@
+<h4 class='text-center alert alert-heading alert-sm'>
+    Enter Your Profile Information ..... 
+</h4>
+
+<div class='row'>
+    <div class='col-3'></div>
+
+    <div class='col-6'>
+        <form #f="ngForm" (ngSubmit)="insertNewUser(f)">
+            <div class="form-group">
+                <label for="username">Enter Your Username ..... </label>
+                <input type="text" 
+                       class="form-control" 
+                       id="username" 
+                       name="username"
+                       #username = "ngModel"
+                       ngModel
+                       aria-describedby="username"
+                       required
+                >
+                <small id="username" class="form-text text-muted">We'll never share your Username with anyone else.</small>
+            </div>
+
+
+            <div class="form-group">
+                <label for="name">Enter Your name ..... </label>
+                <input type="text" 
+                       class="form-control" 
+                       id="name" 
+                       name="name"
+                       #name = "ngModel"
+                       ngModel
+                       aria-describedby="name"
+                       required
+                >
+                <small id="name" class="form-text text-muted">We'll never share your name with anyone else.</small>
+            </div>
+
+
+            <div class="form-group">
+                <input type='button' 
+                       class='btn btn-primary btn-block' 
+                       value='Select Your Profile image' 
+                       onclick="document.getElementById('image').click()"
+                />
+
+                <input type="file" 
+                      class="form-control" 
+                       ng2FileSelect 
+                       [uploader]="uploader"
+                       id="image"
+                       name="image"
+                       ngModel
+                       #image = "ngModel"
+                       required
+                />
+                <div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar"
+                            [ngStyle]="{ 'width': uploader.progress + '%' }">
+                        </div>
+                    </div>
+                </div>
+
+                <small id="Imagec" class="form-text text-muted">We'll never share your Image with anyone else.</small>
+            </div>
+
+
+
+
+            <button type="submit" class="btn btn-success btn-block" (click)="uploader.uploadAll()"
+                [disabled]="!f.valid || !uploader.getNotUploadedItems().length">
+                Save Your Profile
+            </button>
+
+        </form>
+    </div>
+
+    <div class='col-3'></div>
+</div>
