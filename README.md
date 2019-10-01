@@ -1,1 +1,1 @@
-Upload Image (Create Profile)
+Create Profile (Upload Image)
